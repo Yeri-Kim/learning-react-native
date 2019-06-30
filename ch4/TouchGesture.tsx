@@ -25,12 +25,10 @@ interface StateType {
 
 class TouchGesture extends React.Component<any, StateType> {
 
-  //_panResponder.panHandlers 는 선언하고 싶지 않으면 어떻게?
-  _panResponder = { panHandlers: {} };
+  _panResponder: any = {};
   _previousLeft = 0;
   _previousTop = 0;
-  //_circlesStyles.style 는 선언하고 싶지 않으면 어떻게?
-  _circlesStyles = { style: { left: 0, top: 0 }};
+  _circlesStyles: any = {};
   circle = null;
 
   constructor(props) {
@@ -214,9 +212,8 @@ const styles = StyleSheet.create({
     borderRadius: CIRCLE_SIZE/2,
     backgroundColor: CIRCLE_COLOR,
     position: 'absolute',
-    //처음에 지정했는데도 130, 130에서 시작하지 않는 이유는 무엇?
     left: 130,
-    top: 130
+    top: 500
   }
 });
 
