@@ -10,7 +10,7 @@ const CIRCLE_SIZE = 80;
 const CIRCLE_COLOR = 'blue';
 const CIRCLE_HIGHLIGHT_COLOR = 'green';
 
-interface StateType {
+type StateType = {
   stateID?: string;
   numberActiveTouches: number;
   moveX: number;
@@ -23,12 +23,17 @@ interface StateType {
   vy?: number;
 }
 
-class TouchGesture extends React.Component<any, StateType> {
+class TouchGesture extends React.Component<{}, StateType> {
 
   _panResponder: any = {};
   _previousLeft = 0;
   _previousTop = 0;
-  _circlesStyles: any = {};
+  _circlesStyles = {
+    style: {
+      left: 100,
+      top: 500
+    }
+  };
   circle = null;
 
   constructor(props) {
@@ -211,9 +216,7 @@ const styles = StyleSheet.create({
     height: CIRCLE_SIZE,
     borderRadius: CIRCLE_SIZE/2,
     backgroundColor: CIRCLE_COLOR,
-    position: 'absolute',
-    left: 130,
-    top: 500
+    position: 'absolute'
   }
 });
 
