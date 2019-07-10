@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, ImageBackground } from 'react-native';
 import Forecast from './Forecast';
 import fetchForecast from './utils/open_weather_map';
 
@@ -17,22 +17,27 @@ const WeatherProject = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.welcome}>
-        You input {zip}
-      </Text>
+      <ImageBackground
+        source={require('./screen2.jpg')}
+        style={styles.backdrop}
+      >
+        <Text style={styles.welcome}>
+          You input {zip}
+        </Text>
 
-      {forecast && (
-        <Forecast
-          main={forecast.main}
-          desc={forecast.desc}
-          temp={forecast.temp}
+        {forecast && (
+          <Forecast
+            main={forecast.main}
+            desc={forecast.desc}
+            temp={forecast.temp}
+          />
+        )}
+
+        <TextInput
+          style={styles.input}
+          onChangeText={handleChangText}
         />
-      )}
-
-      <TextInput
-        style={styles.input}
-        onChangeText={handleChangText}
-      />
+      </ImageBackground>
     </View>
   );
 };
@@ -40,9 +45,15 @@ const WeatherProject = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 30,
     backgroundColor: '#f5fcff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  backdrop: {
+    flex: 1,
+    flexDirection: 'column',
+    width: '100%',
+    height: '100%'
   },
   welcome: {
     fontSize: 20,
